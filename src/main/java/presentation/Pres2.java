@@ -18,7 +18,7 @@ public class Pres2 {
 
         String metierClassName=scanner.nextLine();
         Class cMetier=Class.forName(metierClassName);
-        IMetier metier= (IMetier) cMetier.newInstance();
+        IMetier metier= (IMetier) cMetier.getConstructor(IDao.class).newInstance(dao);
 
         Method method=cMetier.getMethod("setDao",IDao.class);
         //metier.setDao(dao) <=>
